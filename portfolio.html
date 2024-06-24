@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gunjan Webdeveloper</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            background-color: #1a1a1a;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #e71c5d;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #1e1e1e;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            background-color: #2d2d2d;
+            padding: 100px 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-text {
+            width: 50%;
+            text-align: center;
+            color: #fff;
+            transition: transform 0.3s;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #e71c5d;
+        }
+
+        .hero-text p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .hero-text .btn {
+            background-color: #e71c5d;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .hero-text .btn:hover {
+            background-color: #c51652;
+        }
+
+        .hero-image {
+            width: 33%;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        /* About Me Section Styles */
+        .about-me {
+            background-color: #1e1e1e;
+            padding: 100px 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: relative;
+        }
+
+        .about-me-text {
+            width: 50%;
+            color: #fff;
+            text-align: justify;
+        }
+
+        .about-me-text h1 {
+            font-size: 3em;
+            color: #e71c5d;
+            margin-bottom: 20px;
+        }
+
+        .about-me-text p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .about-me-image {
+            width: 40%;
+            position: relative;
+            text-align: center;
+        }
+
+        .about-me-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px 100px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .about-me-image img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Skills Section Styles */
+        .skills {
+            background-color: #2d2d2d;
+            padding: 100px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .skill {
+            text-align: center;
+            width: 160px;
+            margin: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .progress {
+            position: relative;
+            display: inline-block;
+            width: 160px;
+            height: 160px;
+        }
+
+        .progress-circle {
+            transform: rotate(-90deg);
+        }
+
+        .progress-circle-back {
+            fill: none;
+            stroke: #3a3a3a;
+            stroke-width: 10;
+        }
+
+        .progress-circle-prog {
+            fill: none;
+            stroke: #e71c5d;
+            stroke-width: 10;
+            stroke-linecap: round;
+            stroke-dasharray: 0 1000;
+            transition: stroke-dasharray 0.7s ease-out;
+        }
+
+        .progress-text {
+            font-size: 1.5em;
+            font-weight: bold;
+            fill: #e71c5d;
+            transition: opacity 0.3s;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1e1e1e;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 80px 0;
+            }
+
+            .hero-text,
+            .hero-image {
+                width: 100%;
+            }
+
+            .about-me {
+                flex-direction: column;
+                text-align: center;
+                padding: 80px 0;
+            }
+
+            .about-me-text,
+            .about-me-image {
+                width: 100%;
+            }
+
+            .skills .skill {
+                width: calc(50% - 40px);
+            }
+        }
+        .projects {
+    background-color: #000;
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.project-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Adjust as needed */
+    gap: 20px; /* Adjust spacing between cards */
+}
+
+.project-card {
+    background-color: #333;
+    border-radius: 10px;
+    width: calc(50% - 20px); /* Two cards per row with spacing */
+    max-width: 600px; /* Maximum width of each card */
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-content {
+    padding: 20px;
+}
+
+.project-content h2 {
+    color: #e71c5d;
+    margin-bottom: 10px;
+}
+
+.project-content p {
+    text-align: left;
+    line-height: 1.6;
+}
+
+.project-video {
+    margin-top: 20px;
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio (for responsive video) */
+    height: 0;
+    overflow: hidden;
+}
+
+.project-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .project-card {
+        width: calc(100% - 20px); /* Full width on smaller screens */
+    }
+}
+.contact {
+    background-color: #333;
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.contact-item {
+    margin-right: 20px;
+    text-align: left;
+}
+
+.contact-item i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.contact-form {
+    margin-top: 30px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #777;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    background-color: #e71c5d;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #ff4d8f;
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-container p {
+    margin-bottom: 10px;
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 24px;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #e71c5d;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <h1>I'm Gunjan</h1>
+            <h2>Web Developer</h2>
+            <p>Welcome to my portfolio site. Let's build something amazing together!</p>
+            <a href="#" class="btn">View Resume</a>
+        </div>
+        <div class="hero-image">
+            <img src="E:\ppic.jpg" alt="Gunjan Pic">
+        </div>
+    </section>
+
+    <section class="about-me" id="about">
+        <div class="about-me-text">
+            <h1>About Me</h1>
+            <p>Hey there! I'm Gunjan, a passionate web developer specializing in backend technologies. I love learning and experimenting with new technologies. My leadership abilities are fantastic because, aside from coding, I enjoy managing multiple events and hosting them. Additionally, you can find me reading in the great outdoors or discovering hidden gems of the city when I'm not coding..</p>
+            <p>Feel free to connect with me on <a href="https://www.linkedin.com/in/gunjan-t-9697a51b3/">LinkedIn</a> or check out my latest projects on <a href="https://github.com/Gunjantank">GitHub</a>.</p>
+        </div>
+        <div class="about-me-image">
+            <img src="E:\pppic.jpg" alt="Gunjan Pic">
+        </div>
+    </section>
+
+    <section class="skills" id="skills">
+        <div class="skill">
+            <div class="progress" onclick="progressBar(this.querySelector('.progress-circle-prog'), 90)">
+                <svg class="progress-circle" width="160" height="160">
+                    <circle class="progress-circle-back" cx="80" cy="80" r="70"></circle>
+                    <circle class="progress-circle-prog" cx="80" cy="80" r="70"></circle>
+                    <text x="50%" y="50%" class="progress-text">0%</text>
+                </svg>
+            </div>
+            <h4>HTML/CSS</h4>
+            <p>Proficient in creating responsive web designs with clean and elegant code.</p>
+        </div>
+
+        <div class="skill">
+            <div class="progress" onclick="progressBar(this.querySelector('.progress-circle-prog'), 30)">
+                <svg class="progress-circle" width="160" height="160">
+                    <circle class="progress-circle-back" cx="80" cy="80" r="70"></circle>
+                    <circle class="progress-circle-prog" cx="80" cy="80" r="70"></circle>
+                    <text x="50%" y="50%" class="progress-text">0%</text>
+                </svg>
+            </div>
+            <h4>JavaScript</h4>
+            <p>Skilled in frontend scripting, creating interactive and dynamic web applications.</p>
+        </div>
+
+        <div class="skill">
+            <div class="progress" onclick="progressBar(this.querySelector('.progress-circle-prog'), 89)">
+                <svg class="progress-circle" width="160" height="160">
+                    <circle class="progress-circle-back" cx="80" cy="80" r="70"></circle>
+                    <circle class="progress-circle-prog" cx="80" cy="80" r="70"></circle>
+                    <text x="50%" y="50%" class="progress-text">0%</text>
+                </svg>
+            </div>
+            <h4>PHP</h4>
+            <p>Experienced in backend development using PHP, creating robust and scalable applications.</p>
+        </div>
+
+        <div class="skill">
+            <div class="progress" onclick="progressBar(this.querySelector('.progress-circle-prog'), 40)">
+                <svg class="progress-circle" width="160" height="160">
+                    <circle class="progress-circle-back" cx="80" cy="80" r="70"></circle>
+                    <circle class="progress-circle-prog" cx="80" cy="80" r="70"></circle>
+                    <text x="50%" y="50%" class="progress-text">0%</text>
+                </svg>
+            </div>
+            <h4>Python</h4>
+            <p>Proficient in scripting and automation using Python, creating efficient and scalable solutions.</p>
+        </div>
+
+        <div class="skill">
+            <div class="progress" onclick="progressBar(this.querySelector('.progress-circle-prog'),75)">
+                <svg class="progress-circle" width="160" height="160">
+                    <circle class="progress-circle-back" cx="80" cy="80" r="70"></circle>
+                    <circle class="progress-circle-prog" cx="80" cy="80" r="70"></circle>
+                    <text x="50%" y="50%" class="progress-text">0%</text>
+                </svg>
+            </div>
+            <h4>MySQL</h4>
+            <p>Skilled in database management and optimization using MySQL, ensuring data integrity and performance.</p>
+        </div>
+
+        <div class="skill">
+            <div class="progress" onclick="progressBar(this.querySelector('.progress-circle-prog'), 40)">
+                <svg class="progress-circle" width="160" height="160">
+                    <circle class="progress-circle-back" cx="80" cy="80" r="70"></circle>
+                    <circle class="progress-circle-prog" cx="80" cy="80" r="70"></circle>
+                    <text x="50%" y="50%" class="progress-text">0%</text>
+                </svg>
+            </div>
+            <h4>WordPress</h4>
+            <p>Learning Wordpress for enhancing PHP skill to make projects more flexible, expanding skills in building scalable server-side applications.</p>
+        </div>
+    </section>
+
+   
+
+    <script>
+        function progressBar(circle, progressVal) {
+            var strokeVal = 4.4 * progressVal;
+            circle.style.strokeDasharray = `${strokeVal} 440`;
+            circle.nextElementSibling.textContent = `${progressVal}%`;
+        }
+    </script>
+
+<section class="projects" id="projects">
+    <h1 style="color: #e71c5d; text-align: center; margin-top: 10px;">Projects</h1>
+    <div class="project-container">
+        <div class="project-card">
+            <div class="project-content">
+                <h2>Project 1: Continue Lifeline</h2>
+                <p>Nowadays, if any accident-affected person's case comes to the hospital, the first issue is "HEAVY BLOOD LOSS". To save lives, the priority-based need is "BLOOD". The existing system can communicate with "BLOOD BANK", but sometimes they step back, resulting in critical situations. The proposed system connects with a network of people who can donate blood, thereby saving lives.</p>
+                <div class="project-video">
+                    <iframe width="100%" height="315" src="E:\continue_lifeline.mp4" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-content">
+                <h2>Project 2: Online Examination System</h2>
+                <p>The primary purpose of our technology is to facilitate online exams, benefiting students especially during pandemic situations. It simplifies registration, provides quick results, allows exams from anywhere, and is environmentally friendly. Results are instantly accessible and user-friendly.</p>
+                <div class="project-video">
+                    <iframe width="100%" height="315" src="E:\projectvideo.mp4" frameborder="0"   allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="contact" id="contact">
+    <div class="contact-container">
+        <h1 style="color: #e71c5d; text-align: center; margin-bottom: 20px;">Contact Me</h1>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fa fa-envelope"></i>
+                <p>Email: <a href="mailto:tankgunjan531@gmail.com">tankgunjan531@gmail.com</a></p>
+            </div>
+            <div class="contact-item">
+                <i class="fa fa-phone"></i>
+                <p>Phone: +91 9327079010</p>
+            </div>
+            <div class="contact-item">
+                <i class="fa fa-map-marker"></i>
+                <p>Address: Gandhinagar, Gujarat, India</p>
+            </div>
+        </div>
+        <div class="contact-form">
+            <h2 style="color: #e71c5d; text-align: center; margin-bottom: 20px;">Get In Touch</h2>
+            <form action="#" method="post">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+<footer>
+    <div class="footer-container">
+        <p>&copy; 2024 Gunjan Webdeveloper. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/gunjan-t-9697a51b3/" class="fa fa-linkedin"></a>
+            <a href="https://github.com/Gunjantank" class="fa fa-github"></a>
+            <a href="https://www.instagram.com/gunja_n28/?hl=en" class="fa fa-instagram"></a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
